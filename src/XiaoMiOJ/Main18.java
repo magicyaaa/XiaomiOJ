@@ -21,6 +21,7 @@ public class Main18 {
         }
     }
 
+
     private static String method(String line) {
         String[] ss = line.split(" ");
         int n = Integer.parseInt(ss[0]);
@@ -28,7 +29,7 @@ public class Main18 {
         for (int i = 0; i < n; i++) {
             students[i] = new Student(Integer.parseInt(ss[2 * i + 1]), Integer.parseInt(ss[2 * i + 2]));
         }
-        Arrays.sort(students);
+        Arrays.sort(students); //先对小学设鞥进行排序  重点！！
 
         LinkedList<Student> list = new LinkedList<>();
         for (int i = 0; i < students.length; i++) {
@@ -63,6 +64,10 @@ public class Main18 {
         iterator.add(st);
     }
 
+    /**
+     * 小学生类
+     * 重写了 compareTo方法
+     */
     private static class Student implements Comparable<Student> {
         int h;
         int k;
