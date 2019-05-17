@@ -1,4 +1,4 @@
-package XiaoMiOJ;
+package XiaoMiOJ.solution1_20;
 
 import java.lang.reflect.Member;
 import java.util.ArrayList;
