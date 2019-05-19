@@ -22,6 +22,10 @@ public class Main22 {
     /**
      * 878888766557 3
      * 436346234214 2
+     *
+     * 思路：1 12 123 ...  123456789 ... 12345678987
+     *  以上数字个数为等差数列 利用前n项和 n(n+1)/2  定位到要求的第k个数字 属于哪一项
+     *  然后找出具体的那一项 ，根据规律，求具体的值
      */
     private static int method(String line) {
         long num = Long.parseLong(line);
