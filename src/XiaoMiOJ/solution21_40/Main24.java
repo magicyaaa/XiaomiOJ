@@ -30,17 +30,18 @@ public class Main24 {
             array[i] = Integer.parseInt(ss[i]);
             sum += array[i];
         }
-        if ((sum & 1) == 1) {
+        if ((sum & 1) == 1) {  //判断是不是偶数
             return false;
         } else {
-            sum = sum / 2;
+            sum = sum / 2;   //把 sum/2 作为target
         }
-        Arrays.sort(array);
-        return method(array, 0, 0, sum);
+        Arrays.sort(array);  //要求有序
+        return method(array, 0, 0, sum); //递归入口
     }
 
+    //递归函数
     private static boolean method(int[] a, int cur, int sum, int target) {
-        if (cur >= a.length) {
+        if (cur >= a.length) {  //推出递归条件，
             return false;
         }
         if (sum + a[cur] == target) {
