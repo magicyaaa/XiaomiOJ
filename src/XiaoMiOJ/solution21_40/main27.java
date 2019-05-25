@@ -8,7 +8,7 @@ import java.util.Scanner;
  * @author: Ya
  * @create: 2019-05-23 00:04
  **/
-public class main25 {
+public class main27 {
     public static void main(String args[]) {
         Scanner scan = new Scanner(System.in);
         String line1;
