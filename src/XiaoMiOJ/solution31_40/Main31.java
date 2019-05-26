@@ -21,6 +21,10 @@ public class Main31 {
     /**
      * 效率最高的一种方式
      * 没看懂怎么算的
+     * <p>
+     * 看懂了—。—
+     * 前n项和公式 a1*n + n*(n-1)*d / 2 = Sn   d = 2
+     * --> a1 = Sn /n + 1-n
      */
     public static void method2(String args[]) {
         Scanner scan = new Scanner(System.in);
