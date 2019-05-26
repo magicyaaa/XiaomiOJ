@@ -26,20 +26,16 @@ public class Main31 {
      * 前n项和公式 a1*n + n*(n-1)*d / 2 = Sn   d = 2
      * --> a1 = Sn /n + 1-n
      */
-    public static void method2(String args[]) {
-        Scanner scan = new Scanner(System.in);
-        while (scan.hasNextLine()) {
-            String line = scan.nextLine().trim();
-            int x = Integer.valueOf(line);
-            double s = Math.sqrt(x);
-            int count = 0;
-            for (int i = 1; i <= s; i++) {
-                if (x % i == 0) {
-                    count++;
-                }
+    public static void method2(String line) {
+        int x = Integer.valueOf(line);
+        double s = Math.sqrt(x);
+        int count = 0;
+        for (int i = 1; i <= s; i++) {
+            if (x % i == 0) {
+                count++;
             }
-            System.out.println(count);
         }
+        System.out.println(count);
     }
 
     /**
