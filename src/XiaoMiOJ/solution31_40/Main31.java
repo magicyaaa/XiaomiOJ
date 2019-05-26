@@ -14,7 +14,7 @@ public class Main31 {
         String line;
         while (scan.hasNextLine()) {
             line = scan.nextLine().trim();
-            System.out.println(method(line));
+            System.out.println(method2(line));
         }
     }
 
@@ -26,7 +26,7 @@ public class Main31 {
      * 前n项和公式 a1*n + n*(n-1)*d / 2 = Sn   d = 2
      * --> a1 = Sn /n + 1-n
      */
-    public static void method2(String line) {
+    public static int method2(String line) {
         int x = Integer.valueOf(line);
         double s = Math.sqrt(x);
         int count = 0;
@@ -35,7 +35,7 @@ public class Main31 {
                 count++;
             }
         }
-        System.out.println(count);
+        return count;
     }
 
     /**
