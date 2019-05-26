@@ -19,6 +19,26 @@ public class Main31 {
     }
 
     /**
+     * 效率最高的一种方式
+     * 没看懂怎么算的
+     */
+    public static void method2(String args[]) {
+        Scanner scan = new Scanner(System.in);
+        while (scan.hasNextLine()) {
+            String line = scan.nextLine().trim();
+            int x = Integer.valueOf(line);
+            double s = Math.sqrt(x);
+            int count = 0;
+            for (int i = 1; i <= s; i++) {
+                if (x % i == 0) {
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+
+    /**
      * 利用等差数列前n项和公式
      * Sn = a1 * n + n(n-1)/2*d
      */
