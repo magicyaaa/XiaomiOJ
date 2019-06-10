@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 /**
  * @program: XiaomiOJ
- * @description: 字符串替换
+ * @description: 硬币排序
  * @author: Ya
- * @create: 2019-06-05 11:08
+ * @create: 2019-06-02 12:26
  **/
 public class Main41 {
     public static void main(String args[]) {
@@ -14,37 +14,52 @@ public class Main41 {
         String line;
         while (scan.hasNextLine()) {
             line = scan.nextLine().trim();
-            System.out.println(method(line));
+            System.out.println(String.valueOf(method(line)));
         }
     }
 
     /**
-     * dp算法  即最小编辑代价 ,插入 删除 替换 (ic dc rc) 的编辑代价都为1
+     * 要求时间复杂度O(n) 空间O(1)
+     * cba -> abc
+     * aaaabc
      */
-    private static int method(String line) {
-        String[] ss = line.split(",");
-        String line1 = ss[0];
-        String line2 = ss[1];
-
-        int[][] dp = new int[line2.length() + 1][line1.length() + 1];
-        for (int i = 0; i < dp[0].length; i++) {
-            dp[0][i] = i;
+    private static char[] method(String line) {
+        char[] chars = line.toCharArray();
+        int start = 0;
+        int end = chars.length - 1;
+        while (chars[end] == 'c') {
+            if (end == 0) {
+                return chars;
+            }
+            end--;
         }
-        for (int i = 0; i < dp.length; i++) {
-            dp[i][0] = i;
-        }
-
-        for (int i = 1; i < dp.length; i++) {
-            for (int j = 1; j < dp[0].length; j++) {
-                if (line1.charAt(j - 1) == line2.charAt(i - 1)) {
-                    dp[i][j] = dp[i - 1][j - 1];
-                } else {
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
+        for (int i = 0; i < chars.length && i <= end; i++) {
+            if (chars[i] == 'a') {
+                if (start < i) {
+                    //交换chars[start] 与 chars[i]
+                    chars[start] ^= chars[i];
+                    chars[i] ^= chars[start];
+                    chars[start] ^= chars[i];
                 }
-                dp[i][j] = Math.min(dp[i][j], dp[i - 1][j] + 1);
-                dp[i][j] = Math.min(dp[i][j], dp[i][j - 1] + 1);
+                start++;
+                continue;
+            } else if (chars[i] == 'b') {
+
+            } else {
+                while (chars[end] == 'c') {
+                    if (end <= i) {
+                        return chars;
+                    }
+                    end--;
+                }
+                //交换chars[i]:c 与 chars[end]:a/b
+                chars[i] ^= chars[end];
+                chars[end] ^= chars[i];
+                chars[i] ^= chars[end];
+                i--;
+                end--;
             }
         }
-        return dp[dp.length - 1][dp[0].length - 1];
+        return chars;
     }
 }
