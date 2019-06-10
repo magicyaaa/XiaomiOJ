@@ -18,6 +18,9 @@ public class Main44 {
         }
     }
 
+    /**
+     * 7877 出错 期望：5  答案： 6
+     */
     private static int method(String line) {
         int num = Integer.parseInt(line);
         Set<Integer> cubeNumSet = new HashSet<>(); //保存立方数
@@ -43,6 +46,7 @@ public class Main44 {
         for (int j = array.length - 1; j >= 0; j--) {
             if (array[j] <= num) {
                 num -= array[j];
+                System.out.println("System.out...... -> " + array[j]);
                 j++;
                 res++;
             }
