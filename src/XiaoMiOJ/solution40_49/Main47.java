@@ -14,10 +14,13 @@ public class Main47 {
         String line;
         while (scan.hasNextLine()) {
             line = scan.nextLine().trim();
-            System.out.println(method(line));
+            System.out.println(method_dp(line));
         }
     }
 
+    /**
+     * 递归方式
+     */
     private static boolean method(String line) {
         String[] ss = line.split(",");
         if (ss.length <= 2) {
@@ -62,5 +65,35 @@ public class Main47 {
             pre++;
         }
         return method1(array, next, next + 1, sum1, sum2) || method2(array, next, next + 2, sum1, sum2);
+    }
+
+    /**
+     * dp
+     */
+    private static boolean method_dp(String line) {
+        String[] ss = line.split(",");
+        if (ss.length <= 2) {
+            return true;
+        }
+        int[] array = new int[ss.length];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = Integer.parseInt(ss[i]);
+        }
+        int[] dp = new int[array.length];
+        int n = dp.length;
+        dp[n - 1] = array[n - 1];
+        dp[n - 2] = array[n - 1] + array[n - 2];
+        dp[n - 3] = array[n - 3] + array[n - 2];
+        if (n >= 4) {
+            dp[n - 4] = Math.max(array[n - 4] + array[n - 1], array[n - 4] + array[n - 3]);
+        }
+        for (int i = array.length - 5; i >= 0; i--) {
+            dp[i] = Math.max(array[i] + Math.min(dp[i + 2], dp[i + 3]), array[i] + array[i + 1] + Math.min(dp[i + 3], dp[i + 4]));
+        }
+        int sum = 0;
+        for (int i : array) {
+            sum += i;
+        }
+        return dp[0] > sum / 2;
     }
 }
