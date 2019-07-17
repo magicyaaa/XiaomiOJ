@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 /**
  * @program: XiaomiOJ
- * @description: 第N个丑数
+ * @description: 第N个丑数  运行超时
  * @author: Ya
  * @create: 2019-06-29 00:14
  **/
