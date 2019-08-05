@@ -9,9 +9,6 @@ import java.util.Scanner;
  * @create: 2019-05-17 23:25
  **/
 
-/**
- * 出错了！！！！
- */
 public class Main21 {
     public static void main(String args[]) {
         Scanner scan = new Scanner(System.in);
@@ -86,18 +83,12 @@ public class Main21 {
             } else {
                 sb.append(max1);
                 k--;
-                if (i1 == index1) {
-                    index1 = i1 + 1;
-                } else if (i2 == index2) {
-                    index2 = i2 + 1;
+                String s1 = method2(a1, a2, i1 + 1, index2, k);
+                String s2 = method2(a1, a2, index1, i2 + 1, k);
+                if (compareString(s1, s2)) {
+                    return sb.append(s1).toString();
                 } else {
-                    String s1 = method2(a1, a2, i1 + 1, index2, k);
-                    String s2 = method2(a1, a2, index1, i2 + 1, k);
-                    if (compareString(s1, s2)) {
-                        return sb.append(s1).toString();
-                    } else {
-                        return sb.append(s2).toString();
-                    }
+                    return sb.append(s2).toString();
                 }
             }
         }
