@@ -1,6 +1,7 @@
 package XiaoMiOJ.solution80_89;
 
 import util.ArrayUtil;
+
 import java.util.Scanner;
 
 
@@ -20,10 +21,6 @@ public class Main85 {
         }
     }
 
-    /**
-     * dp算法
-     * 为啥不对啊 ？？？？？？？？
-     */
     private static int method_dp(String line) {
         String[] ss = line.split(",");
         int[] array = new int[ss.length];
@@ -32,13 +29,11 @@ public class Main85 {
         }
         int[] dp = new int[array.length];
         dp[0] = array[0];
-        if (dp.length > 1) {
-            dp[1] = array[1];
-        } else {
-            return dp[0];
+        if (array.length > 1) {
+            dp[1] = Math.max(array[0], array[1]);
         }
-        for (int i = 2; i < dp.length; i++) {
-            dp[i] = Integer.max(dp[i - 2] + array[i], dp[i - 1]);
+        for (int i = 2; i < array.length; i++) {
+            dp[i] = Math.max(dp[i - 2] + array[i], dp[i - 1]);
         }
         return dp[dp.length - 1];
     }
